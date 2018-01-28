@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import AutoSuggest from '../AutoSuggest';
+
 import * as Styles from './app.scss';
 
 interface AppProps {
@@ -18,7 +21,11 @@ export default class App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <div className={Styles.container} data-hook="app-container">
-        App container!
+        <div className={Styles.title}>
+          Paieška
+          <AutoSuggest />
+        </div>
+        
       </div>
     );
   }
