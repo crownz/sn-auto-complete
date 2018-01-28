@@ -8,10 +8,11 @@ interface Props {
 }
 
 const SuggestionsList = ({ suggestions, onSelect }: Props) => (
-  <div className={Styles.container}>
+  <div className={Styles.container} data-hook="suggestions-container">
     {suggestions.map((suggestion, idx) => (
       <div
         key={`${idx}-${suggestion.suggestion}`}
+        data-hook="suggestion"
         className={Styles.item}
         onClick={() => onSelect(suggestion.suggestion)}
         dangerouslySetInnerHTML={{ __html: suggestion._highlight.suggestion }}
