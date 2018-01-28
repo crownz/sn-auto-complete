@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import AutoSuggest from '../AutoSuggest';
 
-import * as Styles from './app.scss';
+import * as Styles from './App.scss';
 
 interface AppProps {
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as Styles from './SuggestionsList.scss';
 
-interface Props {
+export interface Props {
   onSelect: (strinValue: string) => void;
   suggestions: Suggestion[];
 }

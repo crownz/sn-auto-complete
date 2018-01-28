@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import App from './app.tsx';
+import App from './App.tsx';
 
 describe('Component: App', () => {
 
