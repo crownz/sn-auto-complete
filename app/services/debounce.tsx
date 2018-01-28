@@ -2,8 +2,8 @@ const REQUEST_LIMIT = 3;
 const REQUEST_LIMIT_TIMEOUT = 1000;
 const AFTER_LIMIT_TIMEOUT = 250;
 
-export function debounce(fn: Function) {
-  let limitededCallId: number = null;
+export function debounce(fn: Function): (args?: any) => void {
+  let limittedCallId: number = null;
   let lastCallId: number = null;  
   let requestsCount = 0;
 
@@ -14,8 +14,8 @@ export function debounce(fn: Function) {
     const args = arguments;    
 
     if (requestsCount > REQUEST_LIMIT) {
-      clearTimeout(limitededCallId);
-      limitededCallId = window.setTimeout(() => fn.apply(this, args), AFTER_LIMIT_TIMEOUT);
+      clearTimeout(limittedCallId);
+      limittedCallId = window.setTimeout(() => fn.apply(this, args), AFTER_LIMIT_TIMEOUT);
     } else {
       fn.apply(this, args);
     }

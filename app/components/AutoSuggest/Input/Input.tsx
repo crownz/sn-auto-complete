@@ -13,6 +13,7 @@ const Input = ({ value, onChange, label }: InputProps) => {
     <div className={Styles.container}>
       <div className={Styles.label}>{label}</div>
       <input
+        className={Styles.input}
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
       />

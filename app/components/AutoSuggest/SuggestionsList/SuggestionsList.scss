@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.item {
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  padding: 0 10px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+  span {
+    font-weight: bold;
+  }
+}

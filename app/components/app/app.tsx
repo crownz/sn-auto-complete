@@ -23,9 +23,8 @@ export default class App extends React.Component<AppProps, AppState> {
       <div className={Styles.container} data-hook="app-container">
         <div className={Styles.title}>
           Paieška
-          <AutoSuggest />
         </div>
-        
+        <AutoSuggest />        
       </div>
     );
   }

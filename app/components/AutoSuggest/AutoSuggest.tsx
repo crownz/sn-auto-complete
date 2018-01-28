@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { fetchSuggestions, SuggestionResponse, Suggestion } from '../../services/suggest';
+import { fetchSuggestions } from '../../services/suggest';
 import { debounce } from '../../services/debounce';
 
 import Input from './Input';
+import SuggestionsList from './SuggestionsList';
 
 import * as Styles from './AutoSuggest.scss';
 
@@ -22,36 +23,36 @@ class AutoSuggest extends React.Component<any> {
 
   getSuggestions = debounce((value: string) => {
     if (value !== '' && !this.state.suggestions[value]) {
-      console.log('did not have suggestions yet, fetching..');
       fetchSuggestions(value).then((res: SuggestionResponse) => {
-        const newSuggestions = {
+        const suggestions = {
           ...this.state.suggestions,
           [value]: res.suggestions, 
         };
   
-        this.setState({ suggestions: newSuggestions });
+        this.setState({ suggestions });
       });
     }    
   });
 
   handleChange = (value: string) => {
-    console.log('changed:', value);
     this.setState({ value }, () => this.getSuggestions(value));
   }
 
-  renderSuggestions = () => {
-    const suggestions = this.state.suggestions[this.state.value];
-
-    return suggestions ? suggestions.map((suggestion, idx) => (
-      <div key={idx} dangerouslySetInnerHTML={{ __html: suggestion._highlight.suggestion }} />
-    )) : null;
+  handleSelect = (value: string) => {
+    this.setState({ value });
   }
 
   render() {
+    const { suggestions, value } = this.state;
+
     return (
       <div className={Styles.container}>
-        <Input value={this.state.value} onChange={this.handleChange} label="Preke" />
-        {this.renderSuggestions()}
+        <Input value={value} onChange={this.handleChange} label="Preke" />
+        {
+          value &&
+          suggestions[value] &&
+          <SuggestionsList suggestions={suggestions[value]} onSelect={this.handleSelect} />
+        }
       </div>
     );
   }
